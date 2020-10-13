@@ -12,6 +12,8 @@ Grobid uses different sequence labelling models depending on the labeling task t
 
 * header
 
+* medical
+
 * name-citation
 
 * name-header

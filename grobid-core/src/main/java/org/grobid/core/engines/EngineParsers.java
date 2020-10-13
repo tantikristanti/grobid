@@ -28,6 +28,7 @@ public class EngineParsers implements Closeable {
     private FigureParser figureParser = null;
     private TableParser tableParser = null;
     private MonographParser monographParser = null;
+    private MedicalReportParser medicalReportParser = null;
 
     public AffiliationAddressParser getAffiliationAddressParser() {
         if (affiliationAddressParser == null) {
@@ -174,6 +175,17 @@ public class EngineParsers implements Closeable {
         return monographParser;
     }
 
+    public MedicalReportParser getMedicalParser() {
+        if (medicalReportParser == null) {
+            synchronized (this) {
+                if (medicalReportParser == null) {
+                    medicalReportParser = new MedicalReportParser();
+                }
+            }
+        }
+        return medicalReportParser;
+    }
+
     /**
      * Init all model, this will also load the model into memory
      */
@@ -190,6 +202,7 @@ public class EngineParsers implements Closeable {
         figureParser = getFigureParser();
         tableParser = getTableParser();
         //MonographParser monographParser = getMonographParser();
+        medicalReportParser = getMedicalParser();
     }
 
     @Override
@@ -270,6 +283,12 @@ public class EngineParsers implements Closeable {
             monographParser.close();
             monographParser = null;
             LOGGER.debug("CLOSING monographParser");
+        }
+
+        if (medicalReportParser != null) {
+            medicalReportParser.close();
+            medicalReportParser = null;
+            LOGGER.debug("CLOSING medicalReportParser");
         }
 
         LOGGER.debug("==> All resources closed");
