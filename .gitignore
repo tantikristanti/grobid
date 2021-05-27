@@ -55,6 +55,8 @@ software-mentions
 grobid-keyterm
 dataseer-ml
 grobid-test-ant
+grobid-medical-report
+
 grobid-home/models/quantities
 grobid-home/models/dictionaries-lexical-entries
 grobid-home/models/units
@@ -76,6 +78,7 @@ grobid-home/models/values
 grobid-home/models/dataseer
 grobid-home/models/*-bert*/
 grobid-home/models/*scibert*/
+grobid-home/models/*medical*/
 
 Dockerfile.dataseer
 Dockerfile.software
